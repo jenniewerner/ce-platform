@@ -61,5 +61,16 @@ Meteor.methods({
       pics.push(Util.getBase64Data(pic));
     });
     return pics
+  },
+
+  // temporary
+  setShannon: function(bool) {
+    Cerebro.NO_SHANNON = bool;
+  },
+  setRedirect: function(bool) {
+    Cerebro.REDIRECT = bool;
+  },
+  shouldRedirect: function() {
+    return [ Cerebro.REDIRECT, Cerebro.REDIRECT_URL ];
   }
  });

@@ -1,4 +1,8 @@
 Meteor.publish('experiences', function(experienceId) {
+  if (this.userId == Cerebro.SHANNON_ID) {
+    return Experiences.find({ _id: { $ne: '12345' }});
+  }
+
   if (experienceId) {
     return Experiences.find({ _id: experienceId });
   } else {
