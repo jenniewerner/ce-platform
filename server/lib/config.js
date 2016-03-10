@@ -4,7 +4,7 @@ Cerebro.NOTIFY_METHOD = Cerebro.PUSH;
 //Cerebro.DEBUG_USERS = [ 'pTeAq958AvmvMvF7e', 'mr9qe4nRHQn8KufLX', 'BvYfcgvJ7yDETLjME' ];
 Cerebro.NO_SHANNON = false;
 Cerebro.SHANNON_ID = 'BvYfcgvJ7yDETLjME';
-Cerebro.REDIRECT = false;
+Cerebro.REDIRECT = true;
 Cerebro.REDIRECT_URL = `/results/12345`;
 
 BrowserPolicy.content.allowSameOriginForAll();
