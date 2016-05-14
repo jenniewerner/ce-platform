@@ -33,7 +33,7 @@ Template.experienceButtons.events({
     Meteor.call('launcher.duration', {
       duration: {
         interval: 1,
-        counts: counts || 2
+        counts: counts || 120
       },
       experience: instance.data.experience,
       notificationOptions: {

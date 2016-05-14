@@ -1,3 +1,4 @@
+import './migrations.js';
 import './security.js';
 import './accounts.js';
 import './register-api.js';
