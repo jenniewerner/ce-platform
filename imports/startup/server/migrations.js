@@ -50,4 +50,4 @@ function clearOrphans() {
   log.info(`Cleared ${ pastIncidentCount } orphaned past incidents.`);
 }
 
-clearOrphans();
+// clearOrphans();
