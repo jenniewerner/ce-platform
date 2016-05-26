@@ -1,9 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 
+import { Images } from '../../api/images/images.js';
 import { Experiences } from '../../api/experiences/experiences.js';
 import { Incidents } from '../../api/incidents/incidents.js';
 
 import { log } from '../../api/logs.js';
+
+// Images.remove({});
 
 function clearOrphans() {
   let incidentCount = 0;
