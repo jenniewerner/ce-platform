@@ -114,3 +114,39 @@ LocationManagerServer = class LocationManagerServer {
 };
 
 export const LocationManager = new LocationManagerServer();
+
+export const findAffordances = new ValidatedMethod({
+  name: 'locations.findAffordances',
+  validate: new SimpleSchema ({
+    lat: {
+      type: String,
+      label: 'latitude'
+    },
+    lng: {
+      type: String,
+      label: 'longitude'
+    },
+    uid: {
+      type: String,
+      label: 'uid'
+    }
+  }).validator(),
+  run({ lat, lng, uid}) {
+    console.log("hello, its me");
+    // let updated_affordances = [];
+    // let request = require('request');
+    // let url = 'https://affordanceaware.herokuapp.com/conditions/' + lat + '/' + lng;
+    // request(url, Meteor.bindEnvironment(function (error, response, body) {
+    //     if (!error && response.statusCode == 200) {
+    //         let res = JSON.parse(body);
+    //         let userIds = [uid];
+    //         console.log(res.affordances);
+    //         console.log(experience.affordance);
+    //         if (_.contains(res.affordances, experience.affordance)) {
+    //           console.log("WE FOUND A MATCH!");
+    //           updated_affordances = ["sit", "test"];
+    //         }
+    //     }
+    //   }));
+  }
+});

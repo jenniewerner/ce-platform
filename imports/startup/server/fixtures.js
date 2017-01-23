@@ -135,13 +135,14 @@ Meteor.startup(() => {
         optIn: false
       },
       {
-        name: 'Storytime',
+        name: 'Story time',
         author: kevin._id,
         description: 'Let\'s all write a story together!',
         startText: 'Storytime is about to start!',
         modules: ['chain', 'text'],
         requirements: [],
-        optIn: false
+        optIn: false,
+        affordance: "sit"
       },
       {
         name: 'Nightlight',
@@ -150,7 +151,8 @@ Meteor.startup(() => {
         startText: 'Come be a part of Nightlight!',
         modules: ['map'],
         requirements: [],
-        optIn: true
+        optIn: true,
+        affordance: "sit"
       },
       {
         name: 'Stella Time',
@@ -177,7 +179,8 @@ Meteor.startup(() => {
       modules: [],
       requirements: [],
       route: 'button_game',
-      optIn: false
+      optIn: false,
+      affordance: "sit"
     };
 
     Experiences.insert(button_game);
