@@ -25,6 +25,11 @@ Schema.Locations = new SimpleSchema({
     regEx: SimpleSchema.RegEx.Id,
     label: 'user id'
   },
+  uid: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Id,
+    label: 'user id'
+  },
   lat: {
     type: Number,
     decimal: true,
@@ -36,6 +41,9 @@ Schema.Locations = new SimpleSchema({
     decimal: true,
     min: -180,
     max: 180
+  },
+  affordances: {
+    type: [String]
   }
 });
 
