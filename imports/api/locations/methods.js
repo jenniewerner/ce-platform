@@ -29,24 +29,9 @@ export const updateLocation = new ValidatedMethod({
       //   lng: lng,
       //   affordances : ["test"] // aff //updated_affordances
       // }});
+      
     } else {
       Locations.insert({ uid: uid, lat: lat, lng: lng });
     }
-  }
-});
-
-export const getAffordances = new ValidatedMethod({
-  name: 'locations.getAffordances',
-  validate: Schema.Locations.validator(),
-  run({ uid, lat, lng, affordance}) {
-    console.log("in check availability");
-    // Meteor.call('experiences.getAffordances', {
-    //   lat: lat,
-    //   lng: lng,
-    //   uid: uid,
-    //   affordance: affordanc
-    // }, (err, res) => {
-    //   if (err) { console.log(err);}
-    // });
   }
 });
