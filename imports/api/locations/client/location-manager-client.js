@@ -67,10 +67,10 @@ LocationManagerClient = class LocationManagerClient {
     //return;
     console.log("calling updateUserLocation");
 
-    //if (Meteor.userId() && location) {
-    if(location){
+    if (Meteor.userId() && location) {
+    //if(location){
       updateLocation.call({
-        uid: "rZbhaHwbcNAPgTWbr", //Meteor.userId(),
+        uid: Meteor.userId(), //"rZbhaHwbcNAPgTWbr",
         lat: location.lat,
         lng: location.lng
       });
