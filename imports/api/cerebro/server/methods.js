@@ -275,24 +275,70 @@ export const notifyOnAffordances = new ValidatedMethod({
       if (!error && response.statusCode == 200) {
           let res = JSON.parse(body);
           let userIds = [uid];
-          console.log("res affordances: " + res);
-          console.log("experience affordances: " + experience.affordance);
-          console.log("difference: " + _.difference(experience.affordance, res))
+          let affordances = [];
+          let str = experience.affordance;
 
-          // if (_.contains(res.affordances, experience.affordance)) {
-          if (_.difference(experience.affordance, res) == 0) {
-            console.log('Notifying user');
-            console.log('notifying: ' + userIds);
-            Cerebro.setActiveExperiences(userIds, experience._id);
-            Cerebro.addIncidents(userIds, incident);
-            Cerebro.notify({
-              userIds: userIds,
-              experienceId: experience._id,
-              subject: notificationOptions.subject,
-              text: notificationOptions.text,
-              route: notificationOptions.route
-            });
+          // && affordances
+          if (str.search(" and ") > 0) {
+            affordances = experience.affordance.split(" and ");
+            console.log("and affordances: " + affordances);
+            console.log("res affordances: " + res);
+            differences =  _.difference(affordances, res)
+            console.log("differences: " + differences)
+            console.log(differences.length)
+            if (differences.length == 0) {
+              console.log('Notifying user');
+              console.log('notifying: ' + userIds);
+              Cerebro.setActiveExperiences(userIds, experience._id);
+              Cerebro.addIncidents(userIds, incident);
+              Cerebro.notify({
+                userIds: userIds,
+                experienceId: experience._id,
+                subject: notificationOptions.subject,
+                text: notificationOptions.text,
+                route: notificationOptions.route
+              });
+            }
           }
+          // || affordances
+          else if (str.search(" or ") > 0) {
+            affordances = experience.affordance.split(" or ");
+            console.log("or affordances: " + affordances);
+            console.log("res affordances: " + res);
+            for (i = 0; i < affordances.length; i++)  {
+              anAffordance = affordances[i];
+              console.log(anAffordance);
+              if (_.contains(res, anAffordance)) {
+                console.log('Notifying user');
+                console.log('notifying: ' + userIds);
+                Cerebro.setActiveExperiences(userIds, experience._id);
+                Cerebro.addIncidents(userIds, incident);
+                Cerebro.notify({
+                  userIds: userIds,
+                  experienceId: experience._id,
+                  subject: notificationOptions.subject,
+                  text: notificationOptions.text,
+                  route: notificationOptions.route
+                });
+                break;
+              }
+            }
+          }
+          // if (_.contains(res.affordances, experience.affordance)) {
+
+          // if (_.difference(experience.affordance, res) == 0) {
+          //   console.log('Notifying user');
+          //   console.log('notifying: ' + userIds);
+          //   Cerebro.setActiveExperiences(userIds, experience._id);
+          //   Cerebro.addIncidents(userIds, incident);
+          //   Cerebro.notify({
+          //     userIds: userIds,
+          //     experienceId: experience._id,
+          //     subject: notificationOptions.subject,
+          //     text: notificationOptions.text,
+          //     route: notificationOptions.route
+          //   });
+          // }
       }
     }));
   }

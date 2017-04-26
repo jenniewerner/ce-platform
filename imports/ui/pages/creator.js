@@ -29,20 +29,23 @@ Template.creator.events({
     //const radius = event.target.radius.value;
     const duration = event.target.duration.value;
     // const affordance = event.target.affordance.value;
-    let affordance = [];
-    let affordances = event.target.affordance.value;
+    let affordance = event.target.affordance.value;
 
-    var res = affordances.split(" ");
-    console.log("res: " + res);
-    console.log(res.length);
-    for (let i = 0, l = res.length; i < l; i++) {
-      if (res[i]) {
-        affordance.push(res[i]);
-        console.log(res[i]);
-      }
-    }
-    console.log(affordance);
-    console.log("creator: " + affordance);
+    //CODE FOR WHEN AFFORDANCES TOOK IN ARRAY OF STRINGS
+    // let affordance = [];
+    // let affordances = event.target.affordance.value;
+    //
+    // var res = affordances.split(" ");
+    // console.log("res: " + res);
+    // console.log(res.length);
+    // for (let i = 0, l = res.length; i < l; i++) {
+    //   if (res[i]) {
+    //     affordance.push(res[i]);
+    //     console.log(res[i]);
+    //   }
+    // }
+    // console.log("creator: " + affordance);
+    //CODE END
 
     // Parse out modules
     let modules = [];
@@ -67,16 +70,6 @@ Template.creator.events({
     // Process affordances
     const optIn = event.target.optin.checked;
 
-    // Process location
-    /**let location = _.find(Schema.YelpCategories, (category) => {
-      return category.title == event.target.location.value;
-    });
-    if (location) {
-      location = location.alias;
-    } else {
-      location = '';
-    }**/
-
     Experiences.insert({
       name,
       description: desc,
@@ -87,7 +80,6 @@ Template.creator.events({
       requirements,
       affordance,
       duration,
-    //  radius,
       optIn
     }, (err, experienceId) => {
       if (err) {

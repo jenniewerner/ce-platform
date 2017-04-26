@@ -63,7 +63,7 @@ Schema.Experience = new SimpleSchema({
     allowedValues: _.map(Schema.YelpCategories, category => category.alias)
   },**/
   affordance: {
-    type: [String],
+    type: String,
     label: 'Affordances of the experience',
     optional: true
   },
@@ -83,11 +83,6 @@ Schema.Experience = new SimpleSchema({
     optional: true,
     defaultValue: 120
   },
-  /*radius: {
-    type: Number,
-    label: 'The estimated size of the location / radius around which to look for people',
-    optional: true
-  },**/
   optIn: {
     type: Boolean,
     label: 'Subscription model of the experience',
